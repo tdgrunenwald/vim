@@ -6,8 +6,8 @@
 set runtimepath=$VIM_HOME,$VIMRUNTIME
 
 if empty(glob('$VIM_HOME/autoload/plug.vim'))
-	silent !curl -fLo $VIM_HOME/autoload/plug.vim --create-dirs \
-		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	silent !curl -fLo $VIM_HOME/autoload/plug.vim --create-dirs
+			\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
 call plug#begin('$VIM_HOME/vim-plug')
