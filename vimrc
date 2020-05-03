@@ -1,5 +1,12 @@
 " vimrc (forked from the default vimrc by Bram Moolenaar)
 " Tyler Grunenwald | github.com/tdgrunenwald
+"
+" Use Vim settings, rather than Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+" Avoid side effects when it was already reset.
+if &compatible
+  set nocompatible
+endif
 
 " Set personal vim directory under ~/.config for consistency
 " Requires $VIM_HOME to be set to desired location of user vim config
@@ -13,17 +20,16 @@ endif
 call plug#begin('$VIM_HOME/vim-plug')
 Plug 'junegunn/goyo.vim'
 Plug 'vim-syntastic/syntastic'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
 call plug#end()
 
 " Include global tags file in tags file search path
 set tags=./tags,./TAGS,\tags,TAGS,$HOME/.config/vim/tags
-
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-" Avoid side effects when it was already reset.
-if &compatible
-  set nocompatible
-endif
+let g:easytags_async = 1
+let g:easytags_always_enabled = 1
+let g:easytags_dynamic_files = 1
+let g:easytags_file = '~/.config/vim/tags'
 
 " Don't wait so long for mapped keys. Makes some things (e.g. pipe cursor ->
 " block cursor transition after <ESC> from insert mode) snappier
