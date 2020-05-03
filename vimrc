@@ -12,6 +12,7 @@ endif
 
 call plug#begin('$VIM_HOME/vim-plug')
 Plug 'junegunn/goyo.vim'
+Plug 'vim-syntastic/syntastic'
 call plug#end()
 
 " Include global tags file in tags file search path
@@ -48,6 +49,7 @@ set showcmd
 set ruler
 set background=dark
 set scrolloff=5
+set laststatus=2 " always show the status line
 
 " Search behavior
 set hlsearch
@@ -64,6 +66,17 @@ set backspace=start,eol,indent
 syntax on
 let c_comment_strings=1	" Highlight strings in C comments
 filetype plugin indent on
+
+" Syntastic
+set statusline=
+set statusline+=[b%n]%h%w%r%y[%p%%][%02B]\ %F%m%=
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Jump to matching XML tags with %
 if has('syntax') && has('eval')
